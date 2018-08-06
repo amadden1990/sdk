@@ -3,8 +3,11 @@
 https://aframe.io/releases/0.7.0/aframe.min.js"></script><script src="
 https://sdk.altvr.com/libs/altspace.js/2.9.0/altspace.min.js"></script></head>
 <body>
-<a-scene altspace="fullspace: true">
+<a-scene altspace="fullspace: true" sync-system='app: sdk; author: Anthony-Madden; '>
 <a-assets>
+<a-asset-item id="box" src="models\/box.gltf"></a-asset-item>
+<a-mixin id="box-mixin" gltf-model="#box" collapse-model scale="1 1 1"></a-mixin>
+<a-mixin id="box-mixin-to-eye" n-skeleton-parent="part: eye; side: left;" sync sync-n-skeleton-parent></a-mixin>
 
 
 </a-assets>
@@ -22,7 +25,7 @@ standard; transparent: false; color: #FF0000;  side: front; " shadow="receive:
 false; cast: false;" >
 </a-entity>
 
-
+<a-entity id="box-instantiator" mixin="box-mixin" instantiator="on: click; mixin: box-mixin box-mixin-to-eye" position="0 0 0" ></a-entity>
 
 
 </a-scene>
